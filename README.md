@@ -1,1 +1,2 @@
 # ppke-python
+#szia kompi
