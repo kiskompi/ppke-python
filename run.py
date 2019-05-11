@@ -3,6 +3,7 @@ from parameters import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def show(qmaze):
     plt.grid(True)
     nrows, ncols = qmaze.maze.shape
@@ -34,5 +35,5 @@ maze = [
 qmaze = Qmaze(maze)
 canvas, reward, game_over = qmaze.act(DOWN)
 print("reward=", reward)
-show(qmaze)
+plt.show(qmaze)
 
