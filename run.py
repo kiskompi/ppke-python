@@ -14,6 +14,8 @@ from keras.layers.core import Dense, Activation
 from keras.optimizers import SGD , Adam, RMSprop
 from keras.layers.advanced_activations import PReLU
 
+from keras.models import model_from_json
+
 def show(qmaze):
     plt.grid(True)
     n_rows, n_cols = qmaze.m_maze.shape
@@ -151,9 +153,10 @@ def qtrain(model, maze, **opt):
     # Save trained model weights and architecture, this will be used by the visualization code
     h5file = name + ".h5"
     json_file = name + ".json"
+    my_model = model.to_json()
     model.save_weights(h5file, overwrite=True)
-    with open(json_file, "w") as outfile:
-        json.dump(model.to_json(), outfile)
+    with open(json_file, "w") as of:
+        of.write(my_model)
     end_time = datetime.datetime.now()
     dt = datetime.datetime.now() - start_time
     seconds = dt.total_seconds()
