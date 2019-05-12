@@ -43,6 +43,8 @@ def play_game(model, qmaze, agent_cell):
 
         # apply action, get rewards and new state
         envstate, reward, game_status = qmaze.act(action)
+        img = plt.imshow(canvas, interpolation='none', cmap='gray')
+        plt.show()
         if game_status == 'win':
             return True
         elif game_status == 'lose':
@@ -105,6 +107,8 @@ def qtrain(model, maze, **opt):
 
             # Apply action, get reward and new envstate
             envstate, reward, game_status = qmaze.act(action)
+            img = plt.imshow(canvas, interpolation='none', cmap='gray')
+            plt.show()
             if game_status == 'win':
                 win_history.append(1)
                 game_over = True
@@ -205,8 +209,7 @@ maze =  np.array([
 qmaze = Qmaze(maze)
 canvas, reward, game_over = qmaze.act(DOWN)
 print("reward=", reward)
-show(qmaze)
 img = show(qmaze)
 
-# model = build_model(maze)
-# qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
+model = build_model(maze)
+qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)

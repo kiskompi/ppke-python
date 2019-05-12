@@ -395,6 +395,7 @@ def show_env(env, fname=None):
     for cell in env.flags:
         canvas[cell] = flag_mark
     img = plt.imshow(canvas, interpolation='none', cmap='gray')
+    plt.show()
     if fname:
         plt.savefig(fname)
     return img
