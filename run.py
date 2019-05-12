@@ -45,8 +45,8 @@ def play_game(model, qmaze, agent_cell):
 
         # apply action, get rewards and new state
         envstate, reward, game_status = qmaze.act(action)
-        img = plt.imshow(canvas, interpolation='none', cmap='gray')
-        plt.show()
+        #img = plt.imshow(canvas, interpolation='none', cmap='gray')
+        img = show(qmaze)
         if game_status == 'win':
             return True
         elif game_status == 'lose':
@@ -110,7 +110,7 @@ def qtrain(model, maze, **opt):
             # Apply action, get reward and new envstate
             envstate, reward, game_status = qmaze.act(action)
             img = plt.imshow(canvas, interpolation='none', cmap='gray')
-            plt.show()
+            #plt.show()
             if game_status == 'win':
                 win_history.append(1)
                 game_over = True
@@ -145,7 +145,7 @@ def qtrain(model, maze, **opt):
         print(template.format(epoch, n_epoch-1, loss, n_episodes, sum(win_history), win_rate, t))
         # we simply check if training has exhausted all free cells and if in all
         # cases the agent won
-        if win_agent > 0.9 : epsilon = 0.05
+        if win_rate > 0.9 : epsilon = 0.05
         if sum(win_history[-hsize:]) == hsize and completion_check(model, qmaze):
             print("Reached 100%% win rate at epoch: %d" % (epoch,))
             break
@@ -215,10 +215,10 @@ print("reward=", reward)
 img = show(qmaze)
 
 #TRAIN
-model = build_model(maze)
-qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
+#model = build_model(maze)
+#qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
 
-"""
+
 #PLAY/EVALUATE
 json_file = open('model.json','r')
 model_json = json_file.read()
@@ -230,4 +230,5 @@ model.compile(optimizer='adam',loss='mse')
 
 if completion_check(model=model,qmaze=qmaze):
     print("I'm done!")
-"""
+
+img = show(qmaze)
