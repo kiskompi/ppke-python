@@ -1,5 +1,0 @@
-1) Read through and understand: https://www.samyzaf.com/ML/rl/qmaze.html
-2) Creating maze with a GUI, 9x9 maze
-3) copy&paste the code on the blogsite
-4) try it and run
-5) Checkpoint version can be found at: https://github.com/samyzaf/tdfmaze
