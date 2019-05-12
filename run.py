@@ -1,6 +1,6 @@
 from Qmaze_class import Qmaze
 from parameters import *
-# from experience import Experience
+from experience import Experience
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -211,5 +211,20 @@ canvas, reward, game_over = qmaze.act(DOWN)
 print("reward=", reward)
 img = show(qmaze)
 
+#TRAIN
 model = build_model(maze)
 qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
+
+"""
+#PLAY/EVALUATE
+json_file = open('model.json','r')
+model_json = json_file.read()
+json_file.close()
+model = model_from_json(model_json)
+model.load_weights("./model.h5")
+print("Loaded model and weights!")
+model.compile(optimizer='adam',loss='mse')
+
+if completion_check(model=model,qmaze=qmaze):
+    print("I'm done!")
+"""
