@@ -1,5 +1,5 @@
-visited_mark = 0.8  # Cells visited by the rat will be painted by gray 0.8
-agent_mark = 0.5      # The current rat cell will be painteg by gray 0.5
+visited_mark = 0.8  # Cells visited by the agent will be painted by gray 0.8
+agent_mark = 0.5      # The current agent cell will be painted by gray 0.5
 LEFT = 0
 UP = 1
 RIGHT = 2
