@@ -1,6 +1,6 @@
 from Qmaze_class import Qmaze
 from parameters import *
-from experience import Experience
+# from experience import Experience
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -29,6 +29,7 @@ def show(qmaze):
     canvas[agent_row, agent_col] = 0.3   # agent cell
     canvas[n_rows-1, n_cols-1] = 0.9 # final target cell
     img = plt.imshow(canvas, interpolation='none', cmap='gray')
+    plt.show()
     return img
 
 def play_game(model, qmaze, agent_cell):
@@ -202,13 +203,10 @@ maze =  np.array([
 ])
 
 qmaze = Qmaze(maze)
-<<<<<<< HEAD
 canvas, reward, game_over = qmaze.act(DOWN)
 print("reward=", reward)
 show(qmaze)
-=======
 img = show(qmaze)
->>>>>>> b98e729f752d51b3a33e7e2c31fc8f0c1442d873
 
-model = build_model(maze)
-qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
+# model = build_model(maze)
+# qtrain(model, maze, epochs=1000, max_memory=8*maze.size, data_size=32)
